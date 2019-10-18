@@ -1,3 +1,5 @@
+var pat;
+var obs;
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
@@ -25,6 +27,10 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+          pat=patient;
+          obs=obv;
+          console.log(patient)
+          console.log(obv)
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
